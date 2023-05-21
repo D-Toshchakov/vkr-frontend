@@ -20,7 +20,7 @@ axiosInstance.interceptors.request.use(config => {
 
 axiosInstance.interceptors.response.use(config => config, async error => {
     const originalRequest = error.config
-
+    const authService = new AuthService()
     if (
         (error.response.status === 401 ||
             errorCatch(error) === 'jwt expired' ||
@@ -31,7 +31,7 @@ axiosInstance.interceptors.response.use(config => config, async error => {
         originalRequest._isRetry = true
         try {
             // get new tokens
-            await AuthService.getNewTokens()
+            await authService.getNewTokens()
             return axiosInstance.request(originalRequest)
         }
         catch (error) {

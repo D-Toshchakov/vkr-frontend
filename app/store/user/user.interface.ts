@@ -1,4 +1,4 @@
-import { IUser, UserRole } from "../types/user.interface"
+import { IUser, UserRole } from "../../types/user.interface"
 
 export interface IUserState {
     email: string,
