@@ -1,6 +1,7 @@
 import { axiosInstance } from "@/app/api/api.interceptor"
-import { IUser } from "@/app/types"
+
 import { updateUserDto } from "./updateUser.dto"
+import { IUser } from "@/app/types"
 
 export class UserService {
     USER = 'user'
