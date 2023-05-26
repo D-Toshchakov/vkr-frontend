@@ -18,13 +18,13 @@ interface IEmailPassword {
     password: string
 };
 
-const authOptions: NextAuthOptions = {
+export const authOptions: NextAuthOptions = {
     secret: process.env.NEXTAUTH_SECRET,
     session: {
         strategy: 'jwt',
     },
     pages: {
-        signIn: '/signin'
+        signIn: '/signin',
     },
     providers: [
         CredentialsProvider({
@@ -38,6 +38,8 @@ const authOptions: NextAuthOptions = {
                     "password": password,
                 })
 
+                console.log('RES',res.data);
+                
                 if (res.data) {
                     // Any object returned will be saved in `user` property of the JWT
                     return res.data
@@ -50,41 +52,44 @@ const authOptions: NextAuthOptions = {
             },
         })
     ],
-    jwt: {
-        maxAge: 60*60
-    },
+
     callbacks: {
         async jwt({ token, user }) {
-            console.log("TOKEN", token, "\nUser", user);
+            // console.log("TOKEN", token, "\nUser", user);
+            // console.log("COND", Date.now() / 1000 < token.access_token_exp);
             if (user) {
                 // This will only be executed at login. Each next invocation will skip this part.
                 token.refresh_token = user.refresh_token;
                 token.access_token = user.access_token;
-                
-                return { ...token, ...user };
-            }
+                token.access_token_exp = user.access_token_exp
+                token.email = user.user.email
+                token.id = user.user.id
+                token.role = user.user.role
 
-            console.log("EXP", token.exp)
-            console.log(Date.now() / 1000 - token.exp);
-            
-            if (Date.now() / 1000 < token.exp) {
+                return token;
+            } else if (Date.now() / 1000 < token.access_token_exp) {
+                return token;
+            } else {
+                console.log('reached refresh request');
+
+                // If the call arrives after 23 hours have passed, we allow to refresh the token.
+                const refresh = await refreshAccessToken(token);
+                token.access_token = refresh.access_token
+                token.refresh_token = refresh.refresh_token
+                token.access_token_exp = refresh.access_token_exp
+
                 return token;
             }
-
-            // If the call arrives after 23 hours have passed, we allow to refresh the token.
-            const refresh = await refreshAccessToken(token);
-            token.access_token = refresh.access_token
-            token.refresh_token = refresh.refresh_token
-            return token;
         },
         async session({ session, token }) {
-            console.log("SESSION cb", session, 'in Session token', token);
+            // console.log("SESSION cb", session, 'in Session token', token);
 
-            // console.log('TOKEN', token);
-
+            console.log("TOKEN cb",token);
+            
             session.user = token as jwt
-            // console.log('SESSION', session);
-
+            session.user.access_token_exp = token.access_token_exp
+            // console.log('session cb',session);
+            
             return session;
         },
     }
@@ -95,17 +100,22 @@ const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST }
 
 async function refreshAccessToken(tokenObject: JWT) {
+    console.log("URL", process.env.SERVER_URL + '/auth/refreshToken');
+
     try {
         // Get a new set of tokens with a refreshToken
         const tokenResponse = await axios.post(
-            process.env.SERVER_URL + 'auth/refreshToken',
-            null,
-            { headers: { Authorization: `Bearer ${tokenObject.refresh_token}` } });
+            process.env.SERVER_URL + '/auth/refresh',
+            {},
+            {
+                headers: { "Authorization": `Bearer ${tokenObject.refresh_token}` }
+            }
+        );
 
         return {
-            ...tokenObject,
-            accessToken: tokenResponse.data.accessToken,
-            refreshToken: tokenResponse.data.refreshToken
+            ...tokenResponse.data,
+            // accessToken: tokenResponse.data.accessToken,
+            // refreshToken: tokenResponse.data.refreshToken
         }
     } catch (error) {
         return {

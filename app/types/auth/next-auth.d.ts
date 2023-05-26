@@ -1,5 +1,6 @@
 import NextAuth from "next-auth";
 import { UserRole } from "../user.interface";
+import { Session, User } from "next-auth";
 
 declare module "next-auth" {
     interface Session {
@@ -22,6 +23,7 @@ declare module "next-auth" {
             role: UserRole
         },
         access_token: string,
-        refresh_token: string
+        refresh_token: string,
+        access_token_exp: number
     }
 }

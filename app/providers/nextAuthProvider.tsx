@@ -1,20 +1,33 @@
-'use client'
+'use client';
+
 import { Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
-import RefreshTokenHandler from "../components/refreshTokenHandler";
-import { useState } from "react";
 
 type Props = {
-  children?: React.ReactNode;
-  session: Session
+  children: React.ReactNode;
+  session: Session | null
 };
 
-export const NextAuthProvider = ({ children, session }: Props) => {
-  const [refreshInterval, setRefreshInterval] = useState(0)
+const NextAuthProvider = ({ children, session }: Props) => {
   return (
-  <SessionProvider session={session} refetchInterval={refreshInterval}>
-    {children}
-    <RefreshTokenHandler setRefreshInterval={setRefreshInterval}/>
-  </SessionProvider>
+    <SessionProvider session={session}>
+      {children}
+    </SessionProvider>
   )
 };
+
+export default NextAuthProvider
+
+// 'use client';
+
+// import React, { ReactNode } from "react";
+// import { SessionProvider } from "next-auth/react";
+// interface Props {
+//   children: ReactNode;
+// }
+
+// const NextAuthProvider = ({ children }: Props) => {
+//   return <SessionProvider>{children}</SessionProvider>;
+// };
+
+// export default NextAuthProvider;

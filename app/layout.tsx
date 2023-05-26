@@ -1,12 +1,11 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import './assets/styles/globals.css'
+import './assets/styles/globals.scss'
 import { Inter } from 'next/font/google'
 import { persistor, store } from './store/store'
 import { PersistGate } from 'redux-persist/integration/react'
-import { NextAuthProvider } from './providers/nextAuthProvider'
+import NextAuthProvider from './providers/nextAuthProvider'
 import { Session } from 'next-auth'
 import { Providers } from './providers/ReduxProvider'
-import Navbar from './NavBar'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,23 +16,23 @@ export const metadata = {
 
 const queryClient = new QueryClient()
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   session
 }: {
   children: React.ReactNode,
   session: Session,
 }) {
+
   return (
     <html lang="en">
       <body className={inter.className}>
         {/* <QueryClientProvider client={queryClient}> */}
         {/* <Providers>
             <PersistGate loading={null} persistor={persistor}> */}
-        <NextAuthProvider session={session}>
-          <Navbar />
-          {children}
-        </NextAuthProvider>
+        {/* <NextAuthProvider session={session}> */}
+        {children}
+        {/* </NextAuthProvider> */}
         {/* </PersistGate>
           </Providers> */}
         {/* </QueryClientProvider> */}
