@@ -6,6 +6,9 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import Field from '../../ui/input/Field'
 import { validEmail } from './valid-email'
 import { signIn } from 'next-auth/react'
+import PasswordField from '../../ui/input/PasswordField';
+import Link from 'next/link';
+
 
 
 interface IEmailPassword {
@@ -44,7 +47,7 @@ export default function Login() {
           placeholder='Email'
           error={errors.email?.message}
         />
-        <Field
+        <PasswordField
           {...formRegister('password', {
             required: 'password is required',
             minLength: {
@@ -60,7 +63,7 @@ export default function Login() {
         <Button variant='orange' className='mb-4'>login</Button>
         <div>
           <span>
-            Don't have an account yet? <a href="" className='text-primary underline'>Create one</a>
+            Don't have an account yet? <Link href="/register" className='text-primary underline'>Create one</Link>
           </span>
         </div>
       </form>
