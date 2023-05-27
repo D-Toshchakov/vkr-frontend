@@ -2,29 +2,32 @@
 
 import Head from "next/head";
 import NextAuthProvider from "./providers/nextAuthProvider";
-import React, { use, useEffect, useState } from "react";
-import { IProuct, Products } from "./types";
+import React, { useEffect, useState } from "react";
+import { PaginationProducts } from "./types";
 import productService from "./services/product/product.service";
-import CatalogPage from "./components/ui/catalog/Catalog";
+import CatalogPage from "./components/ui/catalog/CatalogPage";
 import { NextPage } from "next";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Session } from "next-auth";
+import Layout from "./components/ui/layout/Layout";
 
 interface Props {
   children?: React.ReactNode,
   session: Session
 }
 const queryClient = new QueryClient()
-// async function Home() {
-
-{/* @ts-expect-error Async Server Component */ }
-// function add():IProuct {}
 
 const Home: NextPage<Props> = ({ session }) => {
-  const [products, setProducts] = useState<Products>({ products: [] })
+  const [data, setData] = useState<PaginationProducts>({ products: [], length: 0 })
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    productService.getAll({ page: 1, perPage: 4 }).then((res) => setProducts({ products: res.data.products }))
+    setLoading(true)
+    productService.getAll({ page: 1, perPage: 4 })
+      .then((res) => {
+        setData(res.data)
+        setLoading(false)
+      })
   }, [])
 
   return (
@@ -37,7 +40,9 @@ const Home: NextPage<Props> = ({ session }) => {
       <main>
         <NextAuthProvider session={session}>
           <QueryClientProvider client={queryClient}>
-            <CatalogPage products={products.products} />
+            <Layout>
+              <CatalogPage isLoading={loading} products={data.products} length={data.length} />
+            </Layout>
           </QueryClientProvider>
         </NextAuthProvider>
       </main>

@@ -10,7 +10,7 @@ const AddToCartButton: FC<{ product: IProuct }> = ({ product }) => {
 
   const currentElement = items.find(cartItem => cartItem.product.id === product.id)
   return (
-    <div>
+    <div className='flex justify-center w-9 h-8 shrink-0 grow-0 bg-primary rounded-full'>
       <button
         onClick={
           () => {
@@ -24,7 +24,7 @@ const AddToCartButton: FC<{ product: IProuct }> = ({ product }) => {
           }
         }
       >
-        {currentElement ? <BsFillCartCheckFill /> : <BsCart />}
+        {currentElement ? <BsFillCartCheckFill size={25} /> : <BsCart size={25} />}
       </button>
     </div >
   )

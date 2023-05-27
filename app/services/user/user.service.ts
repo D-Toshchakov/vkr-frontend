@@ -7,7 +7,7 @@ class UserService {
     private USER = 'user'
 
     async getProfile() {
-        return axiosInstance.get<IFullUser>(`${this.USER}/profile`)
+        return axiosInstance.get<IFullUser>(`/${this.USER}/profile`)
     }
 
     async updateProfile(data: updateUserDto) {

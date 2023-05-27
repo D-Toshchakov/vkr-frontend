@@ -5,27 +5,34 @@ import React, { FC } from 'react'
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai'
 
 const FavoriteButton: FC<{ productId: number }> = ({ productId }) => {
-  const { profile } = useProfile()
+  const { profile } = useProfile(productId)
 
-  const { invalidateQueries } = useQueryClient()
+  const queryClient = useQueryClient()
 
   const { mutate } = useMutation(
     ['toggle favorite'],
     () => userService.toggleFavorite(productId),
-    { 
+    {
       onSuccess() {
-        invalidateQueries(['get profile'])
+        queryClient.invalidateQueries(['get profile'])
       }
     }
   )
 
+  if (!profile) return null
+
   const favoriteExist = profile.favorites.some(
     favorite => favorite.id == productId
   )
+
   return (
     <div>
-      <button onClick={() => mutate()}>
-        {!favoriteExist ? <AiFillHeart /> : <AiOutlineHeart />}
+      <button className='text-primary'
+        onClick={() => {
+          mutate()
+        }}
+      >
+        {favoriteExist ? <AiFillHeart size={30} /> : <AiOutlineHeart size={30} />}
       </button>
     </div >
   )
