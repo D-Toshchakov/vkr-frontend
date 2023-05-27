@@ -2,15 +2,15 @@ import { axiosInstance } from "@/app/api/api.interceptor"
 import { IReview } from "@/app/types"
 import { reviewDto } from "./review.dto"
 
-export class ReviewService {
-    REVIEW = 'review'
+class ReviewService {
+    private REVIEW = 'review'
 
     async getById(id: number | string) {
         return axiosInstance.get<IReview>(`${this.REVIEW}/${id}`)
     }
 
     async getAverageRating(productId: number | string) {
-        return axiosInstance.get<IReview>(`${this.REVIEW}/average/${productId}`)
+        return axiosInstance.get<{ rating: number }>(`${this.REVIEW}/average/${productId}`)
     }
 
     async createReview(data: reviewDto) {
@@ -21,3 +21,5 @@ export class ReviewService {
         return axiosInstance.put<IReview>(`${this.REVIEW}/${id}`, data)
     }
 }
+
+export default new ReviewService()

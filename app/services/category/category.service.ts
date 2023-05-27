@@ -1,8 +1,8 @@
 import { axiosInstance } from "@/app/api/api.interceptor"
 import { ICategory } from "@/app/types"
 
-export class CategoryService {
-    CATEGORY = 'category'
+class CategoryService {
+    private CATEGORY = 'category'
     async getAll() {
         return axiosInstance.get<ICategory[]>(`${this.CATEGORY}/all`)
     }
@@ -23,3 +23,5 @@ export class CategoryService {
         return axiosInstance.put<ICategory>(`${this.CATEGORY}/${id}`, { name })
     }
 }
+
+export default new CategoryService()

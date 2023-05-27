@@ -3,7 +3,7 @@ import { getContentType } from "./api.hepler";
 import { getSession } from "next-auth/react";
 
 export const axiosInstance = axios.create({
-    baseURL: process.env.SERVER_URL,
+    baseURL: process.env.NEXT_PUBLIC_SERVER_URL,
     headers: getContentType(),
 })
 

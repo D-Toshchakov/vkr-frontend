@@ -1,11 +1,12 @@
 import { axiosInstance } from "@/app/api/api.interceptor"
-import { IProuct } from "@/app/types"
+import { IProuct, PaginationProducts } from "@/app/types"
 import { ProductFilters, productDto } from "./product.dto"
+import axios from "axios"
 
-export class ProductService {
-    PRODUCT = 'product'
+class ProductService {
+    private PRODUCT = 'product'
     async getAll(queryData: ProductFilters = {}) {
-        return axiosInstance.get<IProuct[]>(`${this.PRODUCT}`, { params: queryData })
+        return axiosInstance.get<PaginationProducts>(`${this.PRODUCT}`, { params: queryData })
     }
 
     async getById(id: number | string) {
@@ -32,3 +33,5 @@ export class ProductService {
         return axiosInstance.put<IProuct>(`${this.PRODUCT}/${id}`, data)
     }
 }
+
+export default new ProductService()

@@ -1,3 +1,6 @@
+import { IOrder } from "./order.interface"
+import { IProuct } from "./product.interface"
+
 export interface IUser {
     id: string,
     email: string,
@@ -8,3 +11,8 @@ export interface IUser {
 }
 
 export type UserRole = "ADMIN" | "USER"
+
+export interface IFullUser extends IUser {
+    favorites: IProuct[],
+    orders: IOrder[]
+}

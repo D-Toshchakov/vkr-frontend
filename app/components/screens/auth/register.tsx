@@ -1,15 +1,16 @@
 'use client';
 import React from 'react'
 import Heading from '../../Heading'
-import Button from '../../ui/button/Button'
+import Button from '../../ui/buttons/Button'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import Field from '../../ui/input/Field'
 import { validEmail } from './valid-email'
-import { signIn, useSession } from 'next-auth/react'
+import { signIn } from 'next-auth/react'
 import PasswordField from '../../ui/input/PasswordField';
 import { validPhone } from './valid-phone';
-import { redirect, usePathname } from 'next/navigation';
-import axios, { AxiosError } from 'axios';
+import { usePathname } from 'next/navigation';
+import axios from 'axios';
+import { useAuthRedirect } from './useAuthRedirect';
 
 interface IUserRegister {
     email: string,
@@ -20,6 +21,7 @@ interface IUserRegister {
 }
 
 export default function Register() {
+    useAuthRedirect()
     const { register: formRegister, handleSubmit, setError, formState: { errors }, reset } = useForm<IUserRegister>({
         mode: 'onBlur'
     })

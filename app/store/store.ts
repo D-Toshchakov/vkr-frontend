@@ -1,9 +1,11 @@
-import { configureStore, } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
 import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE, persistReducer, persistStore } from "redux-persist";
-import storage from "redux-persist/lib/storage";
+// import storage from "redux-persist/lib/storage";
+import { cartSlice } from "./cart/cart.slice";
+import { createPersistStorage } from "./createStorage";
 
-
+const storage = createPersistStorage()
 const persistConfig = {
     key: 'next-shop',
     storage,
@@ -12,7 +14,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
     // user: userSlice.reducer,
-    // cart: cartSlice.reducer,
+    cart: cartSlice.reducer,
     // carousel: carouselSlice.reducer,
 })
 

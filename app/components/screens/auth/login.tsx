@@ -1,13 +1,14 @@
 'use client';
 import React from 'react'
 import Heading from '../../Heading'
-import Button from '../../ui/button/Button'
+import Button from '../../ui/buttons/Button'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import Field from '../../ui/input/Field'
 import { validEmail } from './valid-email'
 import { signIn } from 'next-auth/react'
 import PasswordField from '../../ui/input/PasswordField';
 import Link from 'next/link';
+import { useAuthRedirect } from './useAuthRedirect';
 
 
 
@@ -17,8 +18,9 @@ interface IEmailPassword {
 }
 
 export default function Login() {
+  useAuthRedirect()
   const { register: formRegister, handleSubmit, formState: { errors }, reset } = useForm<IEmailPassword>({
-    mode: 'onChange'
+    mode: 'onBlur'
   })
 
   const onSubmit: SubmitHandler<IEmailPassword> = async (data) => {

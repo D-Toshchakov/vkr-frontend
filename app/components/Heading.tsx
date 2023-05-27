@@ -4,6 +4,7 @@ import React, { FC, PropsWithChildren } from 'react'
 import cn from 'clsx'
 import { signIn, signOut, useSession } from 'next-auth/react';
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 
 interface IHeading {
     className?: string
@@ -16,20 +17,20 @@ const Heading: FC<PropsWithChildren<IHeading>> = ({ children, className }) => {
     console.log('Session', session);
     
     return (
-        <div className="flex gap-5 ">
+        <div className="flex gap-5 py-5 px-2 items-center">
             <h1 className={cn('font-semibold text-3xl', className)}>
                 {children}
             </h1>
-            {(pathname !== '/signin' && pathname !== '/register') && <div className="ml-auto flex gap-2">
+            {(pathname !== '/signin' && pathname !== '/register') && <div className="ml-auto items-center flex gap-2">
                 {(session && session?.user) ? (
                     <>
-                        <p className="text-sky-600"> {session.user.email}</p>
-                        <button className="text-red-500" onClick={() => signOut()}>
+                        <Link href="/profile" className='text-primary'>Profile</Link>
+                        <button className="" onClick={() => signOut()}>
                             Sign Out
                         </button>
                     </>
                 ) : (
-                    <button className="text-green-600" onClick={() => signIn()}>
+                    <button className="" onClick={() => signIn()}>
                         Sign In
                     </button>
                 )}
