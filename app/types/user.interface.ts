@@ -13,6 +13,6 @@ export interface IUser {
 export type UserRole = "ADMIN" | "USER"
 
 export interface IFullUser extends IUser {
-    favorites: IProuct[],
+    UserFavorites: { product: IProuct }[],
     orders: IOrder[]
 }

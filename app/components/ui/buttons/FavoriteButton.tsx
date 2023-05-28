@@ -21,8 +21,8 @@ const FavoriteButton: FC<{ productId: number }> = ({ productId }) => {
 
   if (!profile) return null
 
-  const favoriteExist = profile.favorites.some(
-    favorite => favorite.id == productId
+  const favoriteExist = profile.UserFavorites.some(
+    favorite => favorite.product.id == productId
   )
 
   return (
