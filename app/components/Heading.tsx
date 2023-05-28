@@ -21,7 +21,7 @@ const Heading: FC<PropsWithChildren<IHeading>> = ({ children, className }) => {
             <h1 className={cn('font-semibold text-3xl', className)}>
                 {children}
             </h1>
-            {(pathname !== '/signin' && pathname !== '/register') &&
+            {/* {(pathname !== '/signin' && pathname !== '/register') &&
                 <div className="ml-auto items-center flex gap-6 text-primary">
                     {(session && session?.user) ? (
                         <>
@@ -36,7 +36,7 @@ const Heading: FC<PropsWithChildren<IHeading>> = ({ children, className }) => {
                         </button>
                     )}
                 </div>
-            }
+            } */}
         </div>
     )
 }

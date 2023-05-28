@@ -17,16 +17,16 @@ const SideBar: FC = () => {
     return (
         <aside className='h-screen sticky top-0 bg-secondary border-t-4 border'>
             <div>
-                <div className='flex justify-center items-center text-xl my-4 gap-1 text-primary'>
+                <div className='flex items-center ml-6 text-xl my-4 gap-1 text-primary'>
                     <div>
                         <BiCategory />
                     </div>
                     <span>Categories</span>
                 </div>
-                <div className='text-gray text-lg'>
+                <div className='text-gray text-lg pb-4'>
                     {categories.map((category) => {
                         return (
-                            <div key={category.id} className=' mx-4 my-2 flex md:justify-center'>
+                            <div key={category.id} className='ml-10 my-2'>
                                 <span className=''>
                                     <Link href={`/categories/${category.slug}`}>{category.name}</Link>
                                 </span>
