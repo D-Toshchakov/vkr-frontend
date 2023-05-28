@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React, { FC } from 'react'
 import logo from '@/app/images/CuLogo.png'
+import SearchBar from '../../search/SearchBar'
 
 const Header: FC = () => {
   return (
@@ -16,6 +17,7 @@ const Header: FC = () => {
           alt='Computer Universe'
         />
       </Link>
+      <SearchBar/>
     </header>
   )
 }

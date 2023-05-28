@@ -5,7 +5,8 @@ import axios from "axios"
 
 class ProductService {
     private PRODUCT = 'product'
-    async getAll(queryData: ProductFilters = {}) {
+    
+    async getAll(queryData: ProductFilters) {
         const { data } = await axiosInstance.get<PaginationProducts>(`${this.PRODUCT}`, { params: queryData })
         return data
     }

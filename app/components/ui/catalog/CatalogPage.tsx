@@ -7,7 +7,7 @@ import ProductItem from './product-item/ProductItem'
 import Loader from '../Loader'
 
 interface ICatalog {
-  products: { product: IProuct }[],
+  products: IProuct[],
   isLoading?: boolean,
   isPagination?: boolean
   title?: string
@@ -23,7 +23,7 @@ const CatalogPage: FC<ICatalog> = ({ products, isLoading, title }) => {
         : products.length ? (
           <div>
             <div className='grid grid-cols-4 gap-8'>
-              {products.map(product => <ProductItem product={product.product} key={product.product.id} />)}
+              {products.map(product => <ProductItem product={product} key={product.id} />)}
             </div>
           </div>
         ) : (<div>There are no products yet</div>)
