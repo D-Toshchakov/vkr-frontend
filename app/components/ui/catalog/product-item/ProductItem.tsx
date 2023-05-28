@@ -13,7 +13,7 @@ import { convertPrice } from '@/app/utils/convertPrice'
 const ProductItem: FC<{ product: IProuct }> = ({ product }) => {
   const { data: session } = useSession()
   return (
-    <div className='rounded-xl bg-white shadow-lg px-2 pb-2'>
+    <div className='rounded-xl bg-white shadow-lg px-2 pb-2 '>
       <div>
         <Link href={`/product/${product.slug}`}>
           <Image

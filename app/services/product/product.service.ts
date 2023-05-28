@@ -6,7 +6,8 @@ import axios from "axios"
 class ProductService {
     private PRODUCT = 'product'
     async getAll(queryData: ProductFilters = {}) {
-        return axiosInstance.get<PaginationProducts>(`${this.PRODUCT}`, { params: queryData })
+        const { data } = await axiosInstance.get<PaginationProducts>(`${this.PRODUCT}`, { params: queryData })
+        return data
     }
 
     async getById(id: number | string) {
@@ -20,7 +21,7 @@ class ProductService {
     async getByCategorySlug(slug: string) {
         return axiosInstance.get<IProuct[]>(`${this.PRODUCT}/category/${slug}`)
     }
-     
+
     async getSimilar(id: number | string) {
         return axiosInstance.get<IProuct[]>(`${this.PRODUCT}/similar/${id}`)
     }

@@ -5,9 +5,11 @@ import Header from './header/Header'
 const Layout: FC<PropsWithChildren<unknown>> = ({ children }) => {
   return (
     <div>
-      <Header/>
+      <Header />
       <div className='grid grid-cols-[1fr_4fr]'>
-        <SideBar />
+        <div className=''>
+          <SideBar />
+        </div>
         <main className='px-8'>
           {children}
         </main>

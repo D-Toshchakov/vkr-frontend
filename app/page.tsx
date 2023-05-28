@@ -5,11 +5,12 @@ import NextAuthProvider from "./providers/nextAuthProvider";
 import React, { useEffect, useState } from "react";
 import { PaginationProducts } from "./types";
 import productService from "./services/product/product.service";
-import CatalogPage from "./components/ui/catalog/CatalogPage";
 import { NextPage } from "next";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Session } from "next-auth";
 import Layout from "./components/ui/layout/Layout";
+import CatalogWithPagination from "./components/ui/catalog/CatalogWithPagination";
+import { prodsPerPage } from "./constants";
 
 interface Props {
   children?: React.ReactNode,
@@ -23,11 +24,10 @@ const Home: NextPage<Props> = ({ session }) => {
 
   useEffect(() => {
     setLoading(true)
-    productService.getAll({ page: 1, perPage: 4 })
-      .then((res) => {
-        setData(res.data)
-        setLoading(false)
-      })
+    productService.getAll({ page: 1, perPage: prodsPerPage })
+      .then((resData) => {
+        setData(resData)
+      }).then(() => setLoading(false))
   }, [])
 
   return (
@@ -41,7 +41,7 @@ const Home: NextPage<Props> = ({ session }) => {
         <NextAuthProvider session={session}>
           <QueryClientProvider client={queryClient}>
             <Layout>
-              <CatalogPage isLoading={loading} products={data.products} length={data.length} />
+              <CatalogWithPagination loading={loading} data={data} length={data.length} />
             </Layout>
           </QueryClientProvider>
         </NextAuthProvider>
