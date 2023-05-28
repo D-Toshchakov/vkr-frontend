@@ -6,7 +6,7 @@ import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai'
 import { ImHeartBroken } from 'react-icons/im' 
 
 const FavoriteButton: FC<{ productId: number }> = ({ productId }) => {
-  const { profile } = useProfile(productId)
+  const { profile } = useProfile()
 
   const queryClient = useQueryClient()
 

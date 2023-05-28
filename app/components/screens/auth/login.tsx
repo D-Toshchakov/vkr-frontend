@@ -8,7 +8,7 @@ import { validEmail } from './valid-email'
 import { signIn } from 'next-auth/react'
 import PasswordField from '../../ui/input/PasswordField';
 import Link from 'next/link';
-import { useAuthRedirect } from './useAuthRedirect';
+import useAuth from '@/app/hooks/useAuth';
 
 
 
@@ -18,7 +18,7 @@ interface IEmailPassword {
 }
 
 export default function Login() {
-  useAuthRedirect()
+  useAuth(true)
   const { register: formRegister, handleSubmit, formState: { errors }, reset } = useForm<IEmailPassword>({
     mode: 'onBlur'
   })

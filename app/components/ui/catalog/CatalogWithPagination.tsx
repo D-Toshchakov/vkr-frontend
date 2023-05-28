@@ -63,7 +63,6 @@ const CatalogWithPagination: FC<ICatalog> = ({ data, loading }) => {
                   )
                 })
               }
-              {/* <Button onClick={() => setPage(page + 1)} size='sm' variant='orange'>Load more</Button> */}
             </div>
           </div>
         ) : (<div>There are no products yet</div>)

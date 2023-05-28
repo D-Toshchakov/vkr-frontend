@@ -10,7 +10,7 @@ import PasswordField from '../../ui/input/PasswordField';
 import { validPhone } from './valid-phone';
 import { usePathname } from 'next/navigation';
 import axios from 'axios';
-import { useAuthRedirect } from './useAuthRedirect';
+import useAuth from '@/app/hooks/useAuth';
 
 interface IUserRegister {
     email: string,
@@ -21,7 +21,7 @@ interface IUserRegister {
 }
 
 export default function Register() {
-    useAuthRedirect()
+    useAuth(true)
     const { register: formRegister, handleSubmit, setError, formState: { errors }, reset } = useForm<IUserRegister>({
         mode: 'onBlur'
     })

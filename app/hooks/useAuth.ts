@@ -1,24 +1,25 @@
 import { signOut, useSession } from "next-auth/react";
-import { useRouter } from "next/router";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function useAuth(shouldRedirect: boolean) {
     const { data: session } = useSession();
     const router = useRouter();
+    const pathName = usePathname()
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     useEffect(() => {
         if (session?.error === "RefreshAccessTokenError") {
-            signOut({ callbackUrl: '/login', redirect: shouldRedirect });
+            signOut({ callbackUrl: '/signin', redirect: shouldRedirect });
         }
 
         if (session === null) {
-            if (router.route !== '/login') {
-                router.replace('/login');
+            if (pathName !== '/signin') {
+                router.replace('/signin');
             }
             setIsAuthenticated(false);
         } else if (session !== undefined) {
-            if (router.route === '/login') {
+            if (pathName === '/signin' || pathName === '/register') {
                 router.replace('/');
             }
             setIsAuthenticated(true);

@@ -21,8 +21,6 @@ const SortDropDown: FC<ISortDropDown> = ({ className, sortType, setSortType }) =
                 <option
                   key={key}
                   onChange={() => setSortType(EnumProductSort[key])}
-                  // value={EnumProductSort[key]}
-                  // selected={sortType === EnumProductSort[key]}
                 >
                   {EnumProductSort[key]}
                 </option>

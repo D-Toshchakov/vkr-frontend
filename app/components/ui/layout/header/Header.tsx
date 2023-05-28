@@ -6,7 +6,7 @@ import logo from '@/app/images/CuLogo.png'
 const Header: FC = () => {
   return (
     <header className='bg-secondary w-full px-4 py-6 grid grid-cols-[1fr_3fr_1.2fr]'>
-      <Link className='' href='/'>
+      <Link href='/'>
         <Image
           color='primary'
           priority

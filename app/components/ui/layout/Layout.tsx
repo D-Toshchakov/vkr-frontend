@@ -1,3 +1,4 @@
+'use client'
 import React, { FC, PropsWithChildren } from 'react'
 import SideBar from '../sideBar/SideBar'
 import Header from './header/Header'
