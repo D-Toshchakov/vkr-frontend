@@ -28,7 +28,7 @@ const SideBar: FC = () => {
                         return (
                             <div key={category.id} className='ml-10 my-2'>
                                 <span className=''>
-                                    <Link href={`/categories/${category.slug}`}>{category.name}</Link>
+                                    <Link href={`/category/${category.slug}`}>{category.name}</Link>
                                 </span>
                             </div>
                         )

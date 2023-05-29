@@ -6,6 +6,7 @@ const colors = {
   black: "#2E3239",
   white: twColors.white,
   gray: "#CDCDCD",
+  darkGray:'#666666',
   primary: "#FF9902",
   secondary: "#161D25",
   "bg-color": "#F2F2F5",

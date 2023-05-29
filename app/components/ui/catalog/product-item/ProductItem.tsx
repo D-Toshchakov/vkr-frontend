@@ -15,22 +15,22 @@ const ProductItem: FC<{ product: IProuct }> = ({ product }) => {
   return (
     <div className='rounded-xl bg-white shadow-lg px-2 pb-2 '>
       <div>
-        {/* <Link href={`/product/${product.slug}`}> */}
-        <Image
-          width={300}
-          height={300}
-          src={product.images[0]}
-          alt={product.name}
-          className='rounded-xl mt-2'
-        />
-        {/* </Link> */}
+        <Link href={`/product/${product.slug}`}>
+          <Image
+            width={300}
+            height={300}
+            src={product.images[0]}
+            alt={product.name}
+            className='rounded-xl mt-2'
+          />
+        </Link>
       </div>
       <div className='flex justify-between mt-2 font-semibold'>
-        <div>
-          {product.name}
-        </div>
-        {/* <Link href={`/product/${product.slug}`}> */}
-        {/* </Link> */}
+        <Link href={`/product/${product.slug}`}>
+          <div>
+            {product.name}
+          </div>
+        </Link>
         {session?.user && <FavoriteButton productId={product.id} />}
       </div>
       <Link

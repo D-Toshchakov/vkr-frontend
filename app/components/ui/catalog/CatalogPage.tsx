@@ -9,7 +9,6 @@ import Loader from '../Loader'
 interface ICatalog {
   products: IProuct[],
   isLoading?: boolean,
-  isPagination?: boolean
   title?: string
 }
 

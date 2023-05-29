@@ -5,7 +5,7 @@ import axios from "axios"
 
 class ProductService {
     private PRODUCT = 'product'
-    
+
     async getAll(queryData: ProductFilters) {
         const { data } = await axiosInstance.get<PaginationProducts>(`${this.PRODUCT}`, { params: queryData })
         return data
@@ -20,7 +20,10 @@ class ProductService {
     }
 
     async getByCategorySlug(slug: string) {
-        return axiosInstance.get<IProuct[]>(`${this.PRODUCT}/category/${slug}`)
+        console.log('REACHED SLUG');
+
+        const { data } = await axiosInstance.get<IProuct[]>(`${this.PRODUCT}/category/${slug}`)
+        return data
     }
 
     async getSimilar(id: number | string) {
