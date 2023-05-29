@@ -33,7 +33,7 @@ const HeaderCart: FC = () => {
           {items.length ? (
             items.map(item => {
               return (
-                <div className='my-4'>
+                <div key={item.id} className='my-4'>
                   <CartItem item={item} key={item.id} />
                 </div>
               )
