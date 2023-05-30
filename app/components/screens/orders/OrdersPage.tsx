@@ -3,8 +3,8 @@ import React, { FC } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import orderService from '@/app/services/order/order.service'
 import Heading from '../../Heading'
-import { convertPrice } from '@/app/utils/convertPrice'
 import useAuth from '@/app/hooks/useAuth'
+import Order from '../../ui/order/Order'
 
 const OrdersPage: FC = () => {
     const { data: orders } = useQuery(
@@ -13,22 +13,14 @@ const OrdersPage: FC = () => {
         { select: ({ data }) => data }
     )
     useAuth(true)
+    console.log("ORDERS",orders);
+
     return (
         <div>
             <Heading>My Orders</Heading>
             <section>
                 {orders?.length ? orders?.map(
-                    order => (
-                        <div
-                            className='rounded-lg bg-white shadow flex gap-10 p-7 my-7'
-                            key={order.id}
-                        >
-                            <span>#{order.id}</span>
-                            <span>{order.status}</span>
-                            <span>{convertPrice(order.total)}</span>
-                            <span>{new Date(order.createdAt).toLocaleString('ru-Ru')}</span>
-                        </div>
-                    )
+                    (order, index) => <Order key={index} order={order} />
                 ) : (
                     <div>You haven't ordered anything yet</div>
                 )}

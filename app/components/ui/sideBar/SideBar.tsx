@@ -23,7 +23,8 @@ const SideBar: FC = () => {
             })
     }, [])
     return (
-        <aside className='flex flex-col pb-10 flex-grow-1 h-[calc(100vh-91px)] sticky top-0 bg-secondary border-t-4 border'>
+        // h-[calc(100vh-91px)]
+        <aside className='flex flex-col pb-10 flex-grow-1 h-[100vh] sticky top-0 bg-secondary border-t-4 border'>
             <div className='flex items-center ml-6 text-xl my-4 gap-1 text-primary'>
                 <div>
                     <BiCategory />
