@@ -13,13 +13,13 @@ export default function useAuth(shouldRedirect: boolean) {
             signOut({ callbackUrl: '/signin', redirect: shouldRedirect });
         }
 
-        if (session === null) {
+        if (session === null && pathName !== '/register') {
             if (pathName !== '/signin') {
                 router.replace('/signin');
             }
             setIsAuthenticated(false);
         } else if (session !== undefined) {
-            if (pathName === '/signin' || pathName === '/register') {
+            if (pathName === '/signin') {
                 router.replace('/');
             }
             setIsAuthenticated(true);

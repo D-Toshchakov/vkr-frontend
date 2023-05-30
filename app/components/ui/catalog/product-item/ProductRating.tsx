@@ -1,6 +1,4 @@
-import ReviewService from '@/app/services/review/review.service'
 import { IProuct } from '@/app/types'
-import { useQuery } from '@tanstack/react-query'
 import React, { FC } from 'react'
 import { Rating } from 'react-simple-star-rating'
 import cn from 'clsx'
@@ -11,15 +9,9 @@ type Props = {
 }
 
 const ProductRating: FC<Props> = ({ product, className }) => {
-    const { data: rating } = useQuery(
-        ['get product rating', product.id],
-        () => {
-            return ReviewService.getAverageRating(product.id)
-        },
-        {
-            select: ({ data }) => data.rating
-        }
-    )
+    const rating = product.reviews.reduce((acc, item) => {
+        return acc + item.rating
+    },0) / product.reviews.length
 
     return (
         <div className={cn('flex justify-between', className)}>
