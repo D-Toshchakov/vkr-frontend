@@ -5,7 +5,12 @@ import React, { FC, useState } from 'react'
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai'
 import { ImHeartBroken } from 'react-icons/im' 
 
-const FavoriteButton: FC<{ productId: number }> = ({ productId }) => {
+interface Props {
+  productId: number
+  className?: string
+}
+
+const FavoriteButton: FC<Props> = ({ productId, className }) => {
   const { profile } = useProfile()
 
   const queryClient = useQueryClient()
@@ -29,8 +34,8 @@ const FavoriteButton: FC<{ productId: number }> = ({ productId }) => {
   )
 
   return (
-    <div>
-      <button className='text-primary'
+    <div className={className}>
+      <button className=''
         onClick={() => {
           mutate()
         }}

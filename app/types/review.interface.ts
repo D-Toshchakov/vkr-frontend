@@ -4,8 +4,7 @@ export interface IReview {
     id: number,
     rating: number,
     text: string,
-    user: {
-        select: IUser
-    },
+    user: IUser
     productId: number
+    updatedAt: Date
 }

@@ -21,21 +21,21 @@ const ProductItem: FC<{ product: IProuct }> = ({ product }) => {
             height={300}
             src={product.images[0]}
             alt={product.name}
-            className='rounded-xl mt-2'
+            className='rounded-xl mt-2 overflow-hidden transition duration-300 ease-in-out hover:scale-105'
           />
         </Link>
       </div>
       <div className='flex justify-between mt-2 font-semibold'>
         <Link href={`/product/${product.slug}`}>
-          <div>
+          <div className='hover:text-primary transition duration-200'>
             {product.name}
           </div>
         </Link>
-        {session?.user && <FavoriteButton productId={product.id} />}
+        {session?.user && <FavoriteButton className='text-primary' productId={product.id} />}
       </div>
       <Link
         href={`/category/${product.category.slug}`}
-        className='text-aqua text-sm mb-3 '
+        className='text-aqua text-sm mb-3 hover:text-opacity-75 duration-300'
       >
         {product.category.name}
       </Link>

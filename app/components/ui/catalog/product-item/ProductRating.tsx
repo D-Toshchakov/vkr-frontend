@@ -14,7 +14,7 @@ const ProductRating: FC<Props> = ({ product, className }) => {
     },0) / product.reviews.length
 
     return (
-        <div className={cn('flex justify-between', className)}>
+        <div className={cn('flex gap-3', className)}>
             <span className='flex items-center text-primary'>
                 <Rating
                     size={25}

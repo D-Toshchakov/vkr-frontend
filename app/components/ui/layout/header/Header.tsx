@@ -4,7 +4,7 @@ import React, { FC } from 'react'
 import logo from '@/app/images/CuLogo.png'
 import SearchBar from '../../search/SearchBar'
 import { usePathname } from 'next/navigation'
-import { signIn, signOut, useSession } from 'next-auth/react'
+import { signIn, useSession } from 'next-auth/react'
 import { AiOutlineHeart } from 'react-icons/ai'
 import HeaderCart from '../../cart/HeaderCart'
 import HeaderProfile from '../../profile/HeaderProfile'
@@ -29,7 +29,11 @@ const Header: FC = () => {
         {session &&
           <>
             <HeaderCart />
-            <Link href='/favorites' className='flex  text-white'>
+            <Link 
+              
+              href='/favorites'
+              className='flex hover:text-primary transition duration-200 text-white'
+            >
               <AiOutlineHeart size={35} />
             </Link>
           </>
@@ -37,7 +41,8 @@ const Header: FC = () => {
         {(pathname !== '/signin' && pathname !== '/register') &&
           <div className="items-center flex gap-6 text-primary">
             {(session && session?.user) ? (
-              <Link href="/profile"><HeaderProfile /></Link>
+              // <Link href="/profile"><HeaderProfile /></Link>
+              <HeaderProfile/>
             ) : (
               <button onClick={() => signIn()}>
                 Sign In
