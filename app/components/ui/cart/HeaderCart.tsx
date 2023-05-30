@@ -7,11 +7,31 @@ import cn from 'clsx'
 import CartItem from './CartItem'
 import { convertPrice } from '@/app/utils/convertPrice'
 import Button from '../buttons/Button'
+import { useMutation } from '@tanstack/react-query'
+import orderService from '@/app/services/order/order.service'
+import { useRouter } from 'next/navigation'
+import { useActions } from '@/app/hooks/useActions'
 
 const HeaderCart: FC = () => {
   const { ref, isVisible, setIsVisible } = useOutside(false)
 
   const { items, total } = useCart()
+
+  const { reset } = useActions()
+
+  const router = useRouter()
+
+  const { mutate } = useMutation(
+    ['place order'],
+    () => orderService.placeOrder(items),
+    {
+      onSuccess({ data }) {
+        router.push(data.confirmation.confirmation_url)
+        reset()
+      }
+    }
+  )
+
   return (
     <div className='flex justify-center' ref={ref}>
       <SquareButton
@@ -49,15 +69,16 @@ const HeaderCart: FC = () => {
             <div>Total:</div>
             <div>{convertPrice(total)}</div>
           </div>
-          <div className='text-center'>
+          {!!items.length && <div className='text-center'>
             <Button
               variant='white'
               size='sm'
               className='btn-link mt-5 mb-2'
+              onClick={() => mutate()}
             >
               Place order
             </Button>
-          </div>
+          </div>}
         </div>
       </div>
     </div>

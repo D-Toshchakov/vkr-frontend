@@ -13,5 +13,6 @@ export interface IOrder {
     createdAt: Date,
     status: OrderStatus,
     items: ICartItem[],
+    total: number,
     user: IUser,
 }

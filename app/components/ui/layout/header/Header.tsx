@@ -13,7 +13,7 @@ const Header: FC = () => {
   const { data: session } = useSession()
   const pathname = usePathname()
   return (
-    <header className='bg-secondary overscroll-none w-full px-4 py-6 grid grid-cols-[1fr_2fr_2.2fr]'>
+    <header className='bg-secondary overscroll-none w-full px-4 py-6 grid grid-cols-[1fr_2.7fr_1.5fr]'>
       <Link href='/'>
         <Image
           color='primary'
@@ -25,24 +25,19 @@ const Header: FC = () => {
         />
       </Link>
       <SearchBar />
-      <div className='flex justify-end items-center gap-6'>
+      <div className='flex justify-end items-center gap-8 mr-8'>
         {session &&
           <>
+            <HeaderCart />
             <Link href='/favorites' className='flex  text-white'>
               <AiOutlineHeart size={35} />
             </Link>
-            <HeaderCart />
           </>
         }
         {(pathname !== '/signin' && pathname !== '/register') &&
           <div className="items-center flex gap-6 text-primary">
             {(session && session?.user) ? (
               <Link href="/profile"><HeaderProfile /></Link>
-              // <>
-              //   <button className="" onClick={() => signOut()}>
-              //     Sign Out
-              //   </button>
-              // </>
             ) : (
               <button onClick={() => signIn()}>
                 Sign In

@@ -42,7 +42,7 @@ const ProductItem: FC<{ product: IProuct }> = ({ product }) => {
       <ProductRating className='-ml-1 mb-2' product={product} />
       <div className='flex justify-between text-2xl font-semibold'>
         {convertPrice(product.price)}
-        <AddToCartButton product={product} />
+        {session && <AddToCartButton product={product} />}
       </div>
     </div>
   )
