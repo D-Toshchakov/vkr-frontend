@@ -2,7 +2,7 @@
 import { NextPage } from 'next'
 import React from 'react'
 import Layout from '../components/ui/layout/Layout'
-import NextAuthProvider from '../providers/nextAuthProvider'
+import NextAuthProvider from '../components/providers/nextAuthProvider'
 import { Session } from 'next-auth'
 import FavoritesPage from '../components/screens/favorites/FavoritesPage'
 

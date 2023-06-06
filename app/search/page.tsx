@@ -4,7 +4,7 @@ import React from 'react'
 import Layout from '../components/ui/layout/Layout'
 import { Session } from 'next-auth'
 import SearchPage from '../components/screens/search/SearchPage'
-import NextAuthProvider from '../providers/nextAuthProvider'
+import NextAuthProvider from '../components/providers/nextAuthProvider'
 
 type Props = {
   session: Session

@@ -5,7 +5,7 @@ import { signIn } from "next-auth/react";
 import { FormEventHandler, useState } from "react";
 import '../assets/styles/globals.scss'
 import Login from "../components/screens/auth/login";
-import NextAuthProvider from "../providers/nextAuthProvider";
+import NextAuthProvider from "../components/providers/nextAuthProvider";
 import { Session } from "next-auth";
 
 interface Props {

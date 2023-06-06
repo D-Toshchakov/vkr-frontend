@@ -47,7 +47,7 @@ const SideBar: FC = () => {
                     )
                 })}
             </div>
-            <div className='flex mt-auto'>
+            <div className='flex mt-auto mb-20'>
                 {session && (
                     <div className='flex items-center ml-9 text-primary gap-1'>
                         <FiLogOut />

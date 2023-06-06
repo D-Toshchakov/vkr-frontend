@@ -1,7 +1,7 @@
 'use client'
 
 import Head from "next/head";
-import NextAuthProvider from "./providers/nextAuthProvider";
+import NextAuthProvider from "./components/providers/nextAuthProvider";
 import React, { useEffect, useState } from "react";
 import { PaginationProducts } from "./types";
 import productService from "./services/product/product.service";

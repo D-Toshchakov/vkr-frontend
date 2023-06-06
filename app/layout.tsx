@@ -1,7 +1,7 @@
 import './assets/styles/globals.scss'
 import { Inter } from 'next/font/google'
 import { PersistGate } from 'redux-persist/integration/react'
-import { Providers } from './providers/ReduxProvider'
+import { Providers } from './components/providers/ReduxProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 

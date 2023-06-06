@@ -3,7 +3,7 @@
 import { NextPage } from "next";
 import '../assets/styles/globals.scss'
 import Register from "../components/screens/auth/register";
-import NextAuthProvider from "../providers/nextAuthProvider";
+import NextAuthProvider from "../components/providers/nextAuthProvider";
 import { Session } from "next-auth";
 
 interface Props {

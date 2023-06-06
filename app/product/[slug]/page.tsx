@@ -1,7 +1,7 @@
 'use client'
 import ProductPage from '@/app/components/screens/product/ProductPage'
 import Header from '@/app/components/ui/layout/header/Header'
-import NextAuthProvider from '@/app/providers/nextAuthProvider'
+import NextAuthProvider from '@/app/components/providers/nextAuthProvider'
 import productService from '@/app/services/product/product.service'
 import { useQuery } from '@tanstack/react-query'
 import { NextPage } from 'next'

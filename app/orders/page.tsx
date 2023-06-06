@@ -3,7 +3,7 @@ import React from 'react'
 import Layout from '../components/ui/layout/Layout'
 import { NextPage } from 'next'
 import { Session } from 'next-auth'
-import NextAuthProvider from '../providers/nextAuthProvider'
+import NextAuthProvider from '../components/providers/nextAuthProvider'
 import OrdersPage from '../components/screens/orders/OrdersPage'
 
 type Props = {

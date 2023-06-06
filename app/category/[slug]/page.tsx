@@ -6,7 +6,7 @@ import CategoryPage from '../../components/screens/category/CategoryPage'
 import { usePathname } from 'next/navigation'
 import { IProuct } from '@/app/types'
 import productService from '@/app/services/product/product.service'
-import NextAuthProvider from '@/app/providers/nextAuthProvider'
+import NextAuthProvider from '@/app/components/providers/nextAuthProvider'
 import { Session } from 'next-auth'
 
 type Props = {
