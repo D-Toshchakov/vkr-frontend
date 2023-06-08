@@ -3,6 +3,8 @@ import { usePathname } from 'next/navigation'
 import React, { FC, useEffect, useState } from 'react'
 import { defaultNavItems } from './sidebarItems';
 import Link from 'next/link';
+import Image from 'next/image';
+import logo from '@/app/images/CuLogo.png'
 
 export type NavItem = {
     label: string;
@@ -18,6 +20,14 @@ const SideBar: FC = () => {
     return (
         // h-[calc(100vh-91px)]
         <aside className='flex flex-col pb-10 flex-grow-1 h-[100vh] sticky top-0 bg-secondary text-white'>
+            <Image
+                className='m-4'
+                priority
+                width={240}
+                height={80}
+                src={logo}
+                alt='Computer Universe'
+            />
             {defaultNavItems.map((item, index) => {
                 return (
                     <Link key={index} href={item.href}>

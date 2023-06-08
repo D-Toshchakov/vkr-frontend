@@ -1,5 +1,5 @@
 import { IOrder } from "./order.interface"
-import { IProuct } from "./product.interface"
+import { IProduct } from "./product.interface"
 
 export interface IUser {
     id: string,
@@ -13,6 +13,6 @@ export interface IUser {
 export type UserRole = "ADMIN" | "USER"
 
 export interface IFullUser extends IUser {
-    UserFavorites: { product: IProuct }[],
+    UserFavorites: { product: IProduct }[],
     orders: IOrder[]
 }

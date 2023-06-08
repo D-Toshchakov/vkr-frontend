@@ -1,10 +1,10 @@
 import { useActions } from '@/app/hooks/useActions'
 import { useCart } from '@/app/hooks/useCart'
-import { IProuct } from '@/app/types'
+import { IProduct } from '@/app/types'
 import React, { FC } from 'react'
 import { BsFillCartCheckFill, BsCart } from 'react-icons/bs'
 
-const AddToCartButton: FC<{ product: IProuct }> = ({ product }) => {
+const AddToCartButton: FC<{ product: IProduct }> = ({ product }) => {
   const { addToCart, removeFromCart } = useActions()
   const { items } = useCart()
 

@@ -6,11 +6,11 @@ export enum EnumProductSort {
 }
 
 export type productDto = {
-    name: string,
-    price: number,
-    description: string,
-    images: string[],
-    categoryId: number,
+    name?: string,
+    price?: number,
+    description?: string,
+    images?: string[],
+    categoryId?: number,
 }
 
 export type ProductFilters = {

@@ -1,13 +1,13 @@
 'use client'
 
-import { IProuct } from '@/app/types'
+import { IProduct } from '@/app/types'
 import React, { FC } from 'react'
 import Heading from '../../Heading'
 import ProductItem from './product-item/ProductItem'
 import Loader from '../Loader'
 
 interface ICatalog {
-  products: IProuct[],
+  products: IProduct[],
   isLoading?: boolean,
   title?: string
 }

@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import CatalogPage from '../../ui/catalog/CatalogPage'
 import useAuth from '@/app/hooks/useAuth'
 import { useProfile } from '@/app/hooks/useProfile'
-import { IProuct } from '@/app/types'
+import { IProduct } from '@/app/types'
 
 type Props = {}
 
@@ -10,7 +10,7 @@ const FavoritesPage: FC<Props> = () => {
     useAuth(true)
 
     const { profile } = useProfile()
-    const products: IProuct[] = []
+    const products: IProduct[] = []
 
     if (profile) {
         for (let item of profile?.UserFavorites) {

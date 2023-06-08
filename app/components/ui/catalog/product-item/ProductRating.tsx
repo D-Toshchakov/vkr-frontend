@@ -1,10 +1,10 @@
-import { IProuct } from '@/app/types'
+import { IProduct } from '@/app/types'
 import React, { FC } from 'react'
 import { Rating } from 'react-simple-star-rating'
 import cn from 'clsx'
 
 type Props = {
-    product: IProuct,
+    product: IProduct,
     className?: string
 }
 

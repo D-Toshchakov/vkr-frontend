@@ -1,6 +1,6 @@
 'use session'
 
-import { IProuct } from '@/app/types'
+import { IProduct } from '@/app/types'
 import React, { FC } from 'react'
 import Image from 'next/image'
 import FavoriteButton from '../../buttons/FavoriteButton'
@@ -10,18 +10,18 @@ import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { convertPrice } from '@/app/utils/convertPrice'
 
-const ProductItem: FC<{ product: IProuct }> = ({ product }) => {
+const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
   const { data: session } = useSession()
   return (
     <div className='rounded-xl bg-white shadow-lg px-2 pb-2 '>
       <div>
         <Link href={`/product/${product.slug}`}>
           <Image
-            width={300}
-            height={300}
+            width={240}
+            height={180}
             src={product.images[0]}
             alt={product.name}
-            className='rounded-xl mt-2 overflow-hidden transition duration-300 ease-in-out hover:scale-105'
+            className='rounded-xl mt-2 transition duration-300 ease-in-out hover:scale-105'
           />
         </Link>
       </div>

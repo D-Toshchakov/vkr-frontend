@@ -2,10 +2,10 @@
 import React, { FC } from 'react'
 import Layout from '../../ui/layout/Layout'
 import CatalogPage from '../../ui/catalog/CatalogPage'
-import { IProuct } from '@/app/types'
+import { IProduct } from '@/app/types'
 
 type Props = {
-    products: IProuct[],
+    products: IProduct[],
     slug: string
 }
 

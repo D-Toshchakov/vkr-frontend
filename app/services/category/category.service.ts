@@ -4,7 +4,8 @@ import { ICategory } from "@/app/types"
 class CategoryService {
     private CATEGORY = 'category'
     async getAll() {
-        return axiosInstance.get<ICategory[]>(`${this.CATEGORY}/all`)
+        const { data } = await axiosInstance.get<ICategory[]>(`${this.CATEGORY}/all`)
+        return data
     }
 
     async getById(id: number | string) {

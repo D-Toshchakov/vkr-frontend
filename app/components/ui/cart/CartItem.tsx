@@ -1,4 +1,4 @@
-import { IProuct } from '@/app/types'
+import { IProduct } from '@/app/types'
 import React, { FC } from 'react'
 import Image from 'next/image'
 import { ICartItem } from '@/app/types/cart.interface'

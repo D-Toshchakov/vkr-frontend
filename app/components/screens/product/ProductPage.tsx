@@ -2,7 +2,7 @@
 import React, { FC, useEffect, useState } from 'react'
 import Heading from '../../Heading'
 import Image from 'next/image'
-import { IProuct } from '@/app/types'
+import { IProduct } from '@/app/types'
 import ProductRating from '../../ui/catalog/product-item/ProductRating'
 import Link from 'next/link'
 import Button from '../../ui/buttons/Button'
@@ -13,7 +13,7 @@ import { convertPrice } from '@/app/utils/convertPrice'
 import ReviewSection from '../../ui/reviews/ReviewSection'
 
 type Props = {
-  product: IProuct
+  product: IProduct
 }
 
 const ProductPage: FC<Props> = ({ product }) => {

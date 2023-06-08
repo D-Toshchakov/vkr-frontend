@@ -1,4 +1,4 @@
-import { IProuct, PaginationProducts } from '@/app/types'
+import { IProduct, PaginationProducts } from '@/app/types'
 import React, { FC, useState } from 'react'
 import Heading from '../../Heading'
 import ProductItem from './product-item/ProductItem'

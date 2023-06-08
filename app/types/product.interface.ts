@@ -1,7 +1,7 @@
 import { ICategory, IReview } from ".";
 
 
-export interface IProuct {
+export interface IProduct {
     id: number,
     name: string,
     slug: string,
@@ -13,9 +13,9 @@ export interface IProuct {
     createdAt: Date,
 }
 
-export type Products = { products: IProuct[] }
+export type Products = { products: IProduct[] }
 
 export type PaginationProducts = {
     length: number,
-    products: IProuct[]
+    products: IProduct[]
 }

@@ -1,4 +1,5 @@
 import AdminLayout from '@/app/components/admin/AdminLayout'
+import AdminProducts from '@/app/components/admin/screens/AdminProducts'
 import React from 'react'
 
 type Props = {}
@@ -6,7 +7,7 @@ type Props = {}
 const Products = (props: Props) => {
     return (
         <AdminLayout>
-            <div>Products</div>
+            <AdminProducts/>
         </AdminLayout>
     )
 }

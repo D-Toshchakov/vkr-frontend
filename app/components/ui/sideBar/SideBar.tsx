@@ -19,7 +19,7 @@ const SideBar: FC = () => {
     useEffect(() => {
         categoryService.getAll()
             .then((resData) => {
-                setCategories(resData.data)
+                setCategories(resData)
             })
     }, [])
     return (

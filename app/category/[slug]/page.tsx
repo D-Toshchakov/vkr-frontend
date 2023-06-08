@@ -4,7 +4,7 @@ import { NextPage } from 'next'
 import React, { useEffect, useState } from 'react'
 import CategoryPage from '../../components/screens/category/CategoryPage'
 import { usePathname } from 'next/navigation'
-import { IProuct } from '@/app/types'
+import { IProduct } from '@/app/types'
 import productService from '@/app/services/product/product.service'
 import NextAuthProvider from '@/app/components/providers/nextAuthProvider'
 import { Session } from 'next-auth'
@@ -14,7 +14,7 @@ type Props = {
 }
 
 const Category: NextPage<Props> = ({ session }) => {
-    const [products, setProducts] = useState<IProuct[]>([])
+    const [products, setProducts] = useState<IProduct[]>([])
     const slug = usePathname().split('/').slice(-1)[0]
     console.log('ABOBA', slug);
 

@@ -1,8 +1,8 @@
-import { IProuct } from ".";
+import { IProduct } from ".";
 
 export interface ICartItem {
     id: number,
-    product: IProuct,
+    product: IProduct,
     quantity: number,
     price: number
 }
