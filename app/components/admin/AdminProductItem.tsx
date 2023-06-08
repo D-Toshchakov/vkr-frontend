@@ -111,7 +111,7 @@ const AdminProductItem: FC<Props> = ({ product, categories }) => {
                                     })
                                 }}
                                 disabled={disabled}
-                                className='w-full text-center border disabled:bg-gray rounded-lg'
+                                className='p-1 w-full text-center border disabled:bg-gray rounded-lg'
                             >
                                 <option
                                     onChange={() => {
